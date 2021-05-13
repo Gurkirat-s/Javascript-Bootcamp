@@ -24,9 +24,39 @@ const deleteTodo = function(todos, text) {
     })
     if (index > -1) {
         todos.splice(index, 1)
-    }
-    
+    }  
 }
 
-deleteTodo(todos, 'workout')
+//to get a list of todos that are false
+
+const getThingsToDo = function(todos) {
+    return todos.filter(function(todo) {
+        return todo.completed === false
+    }) 
+}
+
+
+//Sort by false on top
+//With Object sort doesn't know how to sort, so have to tell it how
+const sortTodos = function (todos) {
+    todos.sort(function(a, b) {
+        if (!a.completed && b.completed) {
+            return -1
+        } else if (a.completed && !b.completed) {
+            return 1
+        } else {
+            if (a.text.toLowerCase() < b.text.toLowerCase()){
+                return -1
+            } else {
+                return 1
+            }
+        }
+    })
+}
+
+sortTodos(todos)
 console.log(todos)
+
+//console.log(getThingsToDo(todos))
+// deleteTodo(todos, 'workout')
+// console.log(todos)

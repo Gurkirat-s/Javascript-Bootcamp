@@ -2,12 +2,12 @@ const notes = [{
     title: 'My next trip',
     body: 'I would like to go to a Spain'
 }, {
-    title: 'New Habits',
-    body: 'Working out. Sleeping early'
-}, {
     title: 'Shopping',
     body: 'Get a new chair'
-}]
+}, {
+    title: 'New Habits',
+    body: 'Working out. Sleeping early'
+}, ]
 
 // notes.pop()             //Removes item at end, returns that item
 // notes.push('New Note')  // Add item to end
@@ -23,18 +23,31 @@ const notes = [{
 //     console.log(item)      //Callback Function - Function that gets passed to a function
 // })
 
+const sortNotes = function (notes) {
+    notes.sort(function (a, b) {         // - Compare Function ---  a and b are some objects from the array we are sorting
+        if (a.title.toLowerCase() < b.title.toLowerCase()) {
+            return -1                   // return -1 if a should come first. return 1 if b should come first. return 0 if order does not need to changed.
+        } else if (b.title.toLowerCase() < a.title.toLowerCase()) {
+            return 1
+        } else {
+            return 0
+        }                    
+    })
+}
+
 const findNote = function (notes, noteTitle) {
     return notes.find(function (note, index) {
         return note.title.toLowerCase() === noteTitle.toLowerCase()
     })
 }
 
-// const findNote = function (notes, noteTitle) {
-//     const index = notes.findIndex(function (note, index) {
-//         return note.title.toLowerCase() === noteTitle.toLowerCase()
-//     })
-//     return notes[index]
-// }
+const findNotes = function (notes, query) {
+    return notes.filter(function (note, index) {
+        const isTitleMatch = note.title.toLowerCase().includes(query.toLowerCase())
+        const isBodyMatch = note.body.toLowerCase().includes(query.toLowerCase())
+        return isTitleMatch || isBodyMatch
+    })
+}
 
-const note = findNote(notes, 'shopping')
-console.log(note)
+sortNotes(notes)
+console.log(notes)
