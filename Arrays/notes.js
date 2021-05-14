@@ -7,7 +7,7 @@ const notes = [{
 }, {
     title: 'New Habits',
     body: 'Working out. Sleeping early'
-}, ]
+}]
 
 // notes.pop()             //Removes item at end, returns that item
 // notes.push('New Note')  // Add item to end
