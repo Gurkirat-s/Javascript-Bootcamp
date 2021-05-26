@@ -1,2 +1,2 @@
-/notes-app
-/ToDo-app
+/notes-app/
+/ToDo-app/
