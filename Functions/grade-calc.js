@@ -3,6 +3,10 @@
 //15/20 -> You got a C (75%)!
 
 const grade = function (studentScore, totalScore) {
+    if (typeof studentScore !== 'number' || typeof totalScore !== 'number') {
+        throw Error('Please enter a number')
+    } 
+
     const percent = (studentScore / totalScore) * 100
     let gradeLetter
 
@@ -19,9 +23,11 @@ const grade = function (studentScore, totalScore) {
     }
 
     return `You got a ${gradeLetter} (${percent}%)!`
+    
 }
-
-console.log(grade(15, 20))
-console.log(grade(18, 20))
-console.log(grade(19, 20))
-console.log(grade(9, 20))
+try {
+    const result = grade(true,20)
+    console.log(result)
+} catch (e) {
+    console.log(e.message)
+}
